@@ -4,7 +4,7 @@ require_relative 'feed_parser'
 class TwitterBot
 
 	def initialize
-		Twitter.configure do |config|
+		client = Twitter.configure do |config|
 			config.consumer_key =
 			config.consumer_secret =
 			config.oath_token =
