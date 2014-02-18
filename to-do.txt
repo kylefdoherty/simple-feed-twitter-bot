@@ -1,0 +1,6 @@
+- store twitter keys in a yaml file and gitignore
+
+
+- remove the case statement that changes the GoAztecs youtube titles 
+- add a check for whether or not the tweets are 140 chars.  If not reduce the title by n - 143 and append '...' to the truncated title 
+- create a feeds database model to figure out what needs to be stored along with feed such as name, url, type (rss or atom)
