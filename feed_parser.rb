@@ -3,9 +3,6 @@ require 'open-uri'
 require 'twitter'
 require 'yaml'
 
-
-
-
 class FeedParser 
 
 	def initialize(*feeds)
@@ -78,13 +75,7 @@ class FeedParser
 	def tweeter(tweet)
 		@client.update(tweet)
 	end 
-
-
-
-
 end 
-
-
 
 
 parser = FeedParser.new('https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads', 'http://www.utsandiego.com/rss/headlines/sports/sdsu-aztecs/')

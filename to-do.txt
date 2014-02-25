@@ -1,6 +1,10 @@
-- store twitter keys in a yaml file and gitignore
+- Make Feeds its own class - new & create, update, delete, list 
+- Parser - 
+- check for new articles, vides, etc. in the feeds and only tweet the new ones
+- save last tweet pub date to file & only tweet next time you run the program if tweets are newer than last tweet from that feed
 
 
-- remove the case statement that changes the GoAztecs youtube titles 
-- add a check for whether or not the tweets are 140 chars.  If not reduce the title by n - 143 and append '...' to the truncated title 
-- create a feeds database model to figure out what needs to be stored along with feed such as name, url, type (rss or atom)
+
+
+
+- learn sinatra and make this a sinatra app
