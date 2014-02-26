@@ -1,17 +1,16 @@
-require 'yaml'
 require 'ap'
 
 #class that stores feeds
 class Feed
 	attr_accessor :file
 
-	def initialize(file = 'feeds.txt')
-		@file = file
+	def initialize(file = 'feeds.txt') # sets file to save feeds to, sets @feed array, and calls the list method 
+		@file = file 
 		@feeds = []
-		list
+		
 	end 
 
-	def create
+	def create # takes a feed from the user and adds it to the file 
 		puts "Add feed"
 		puts '>>'
 		new_feed = gets.chomp
@@ -21,21 +20,21 @@ class Feed
 		puts "added the feed #{new_feed}"
 	end
 
-	def get_feeds
+	def get_feeds #gets the feeds from the file and puts them in the @feeds array so they can be used by the .edit and .delete methods
 		File.open(@file).readlines.each do |f|
 			@feeds << f.strip 
 		end 
 	end 
 
-	def write_feeds
+	def write_feeds #writes the @feeds array to the file so .edit and .delete can write the @feeds array they've changed to the file 
 		File.open @file, 'w' do |f|
 			@feeds.each {|feed| f.puts(feed)}
 		end
 	end 
 
-	def edit(name)
-		get_feeds
-
+	def edit(name) #takes a file name from the user and then checks if that exists in the @feeds array. 
+		get_feeds  #If it does it gets the id and asks the user what they want to change the name to and then changes that index to the new name.
+				   #From here it calls the write_feeds method and writes the new array to the file 
 		if @feeds.include?(name)
 			index = @feeds.index(name)
 			puts "What do you want to change #{name} to?"
@@ -43,16 +42,16 @@ class Feed
 			@feeds[index] = new_feed
 			write_feeds
 		else 
-			puts "no such file"
+			puts "no such feed"
 		end 
 		list
 	end 
 
 
-	def delete(name)
+	def delete(name) #works almost the same as the .edit method but instead of changing the feed name it deletes it
 		get_feeds
 
-		if @feeds.include?(name)
+		if @feeds.include?(name) 
 			index = @feeds.index(name)
 			puts "Are you sure you want to delete #{name}?"
 			puts "Enter 'yes' or 'no':"
@@ -69,7 +68,7 @@ class Feed
 		end 
 	end 
 
-	def list
+	def list #if the feeds.txt file is empty it asks for feeds, if not it puts the feeds from the file 
 		read_file = File.read @file
 		if read_file.empty?
 			puts "the file is empty please add some feeds"
@@ -84,8 +83,8 @@ class Feed
 end 
 
 
-feed1 = Feed.new
-feed1.delete("feeds.com")
+
+
 
 
 

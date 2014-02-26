@@ -1,3 +1,2 @@
-feeds.com/rss
-somecrazyatom.com
-feed.com
+https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads
+http://www.utsandiego.com/rss/headlines/sports/sdsu-aztecs/

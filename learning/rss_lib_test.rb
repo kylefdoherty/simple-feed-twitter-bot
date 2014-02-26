@@ -11,7 +11,7 @@ class FeedParser
     @feeds = feeds 
     @tweet = ""
     @std_pub_date = ""
-    @recency = 21600
+    @recency = 43200
 
 
 
@@ -83,7 +83,7 @@ class FeedParser
 end 
 
 
-parser = FeedParser.new('https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads', 'http://www.utsandiego.com/rss/headlines/sports/sdsu-aztecs/')
+parser = FeedParser.new('http://widget.stagram.com/rss/n/goaztecs/','https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads', 'http://www.utsandiego.com/rss/headlines/sports/sdsu-aztecs/')
 parser.run
 
 
