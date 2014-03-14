@@ -1,10 +1,20 @@
-require_relative 'feed.rb'
+require_relative 'feed_list'
+require_relative 'feed'
 
-class CommandLineInterface #allows user to interact with feed.rb to list, add, edit, and delete 
+class BotInterface #allows user to interact with feed.rb to list, add, edit, and delete 
 
 	def initialize 
-		@feeds = Feed.new
+		@feeds = FeedList.new
 		take_commands
+	end 
+
+	def tweet
+		feed_list = @feeds.feeds
+		feed_list.each do |k,v|
+			new_feed = Feed.new(k,v)
+			puts "******#{k} Feed Items *******"
+			new_feed.items
+		end 
 	end 
 
 	def take_commands
@@ -39,8 +49,10 @@ class CommandLineInterface #allows user to interact with feed.rb to list, add, e
 				name = gets.chomp
 				@feeds.delete(name)
 			when "-tweet"
-				puts "get feeds #{@feeds.get_feeds}"
-				puts "the class #{@feeds.get_feeds.class}"
+				# parser = FeedParser.new(@feeds.get_feeds)
+				# parser.run
+				tweet
+				
 			when "-quit"
 				exit 
 			else 
@@ -53,4 +65,4 @@ class CommandLineInterface #allows user to interact with feed.rb to list, add, e
 
 end
 
-cli = CommandLineInterface.new	
+cli = BotInterface.new	

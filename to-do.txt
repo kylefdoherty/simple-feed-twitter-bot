@@ -1,8 +1,5 @@
-- Make Feeds its own class - new & create, update, delete, list 
-- Parser - 
-- check for new articles, vides, etc. in the feeds and only tweet the new ones
-- save last tweet pub date to file & only tweet next time you run the program if tweets are newer than last tweet from that feed
-
+- store time for last time tweets went out - so for each tweet @tweet_time = Time.new
+- then next time .tweet method is ran it should compare the pub_date from all feeds to the @tweet_time and only tweet articles that are newer than that date
 
 
 
