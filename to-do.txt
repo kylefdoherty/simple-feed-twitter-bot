@@ -1,7 +1,3 @@
-- store time for last time tweets went out - so for each tweet @tweet_time = Time.new
-- then next time .tweet method is ran it should compare the pub_date from all feeds to the @tweet_time and only tweet articles that are newer than that date
-
-
-
-
+- use hash selector pattern instead of case statement
 - learn sinatra and make this a sinatra app
+- add test

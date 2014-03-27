@@ -1,4 +1,6 @@
 require 'time'
+require 'twitter'
+require 'yaml'
 require_relative 'feed_parser'
 require 'ap'
 
@@ -13,6 +15,15 @@ class Feed
 		@items = []
 		@file = "#{@name}_last_tweet.txt"
 		create_item
+
+		config = YAML.load_file('config.yml')
+
+		@client = Twitter::REST::Client.new({
+  			consumer_key: config['consumer_key'],
+  			consumer_secret: config['consumer_secret'],
+  			access_token: config['access_token'],
+  			access_token_secret: config['access_token_secret']
+		})
 	end 
 
 	def create_item 
@@ -34,10 +45,14 @@ class Feed
 	end 
 
 	def tweet(item) 
-		tweet_time = Time.now.utc			
-		puts "\nTitle: #{item.title}"
-		puts "URL: #{item.url}"
-		puts "Pub Date: #{item.pub_date}"
+		tweet_time = Time.now.utc
+		@client.update("#{item.title} #{item.url}")	
+		puts "Tweeted!"
+		sleep(15)
+
+		# puts "\nTitle: #{item.title}"
+		# puts "URL: #{item.url}"
+		# puts "Pub Date: #{item.pub_date}"
 		File.open(@file,"w") {|f| f.puts(tweet_time)} #stores the time of the last tweet so it can be accessed later
 	end 
 

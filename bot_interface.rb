@@ -1,13 +1,3 @@
-# go through the feed list and generate a feed with feed info i.e. name & url 
-# then call the .item_to_tweet method to actually tweet the items 
-
-
-
-
-
-
-
-
 require_relative 'feed_list'
 require_relative 'feed'
 
