@@ -1,2 +1,2 @@
-UT,http://www.utsandiego.com/rss/headlines/sports/sdsu-aztecs/
 GoAztecs,https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads
+Union Tribune,http://www.utsandiego.com/rss/headlines/sports/sdsu-aztecs/

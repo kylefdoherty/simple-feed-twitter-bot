@@ -8,14 +8,14 @@ class BotInterface #allows user to interact with feed.rb to list, add, edit, and
 		take_commands
 	end 
 
-	def tweet
-		feed_list = @feeds.feeds
-		feed_list.each do |k,v|
-			new_feed = Feed.new(k,v)
-			puts "******#{k} Feed Items *******"
-			new_feed.items
-		end 
-	end 
+	# def tweet
+	# 	feed_list = @feeds.feeds
+	# 	feed_list.each do |k,v|
+	# 		new_feed = Feed.new(k,v)
+	# 		puts "******#{k} Feed Items *******"
+	# 		new_feed.items
+	# 	end 
+	# end 
 
 	def take_commands
 		puts "What do you want to do?  To see list of commands enter -commands"
@@ -49,9 +49,7 @@ class BotInterface #allows user to interact with feed.rb to list, add, edit, and
 				name = gets.chomp
 				@feeds.delete(name)
 			when "-tweet"
-				# parser = FeedParser.new(@feeds.get_feeds)
-				# parser.run
-				tweet
+				@feeds.items_to_tweet
 				
 			when "-quit"
 				exit 
