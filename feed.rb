@@ -41,7 +41,7 @@ class Feed
 		File.open(@file,"w") {|f| f.puts(tweet_time)} #stores the time of the last tweet so it can be accessed later
 	end 
 
-	def items_to_tweet 
+	def tweet_items 
 		tweet_time = 0 #variable to store when last tweet went out
 
 		if !File.exists?(@file) || File.zero?(@file)
@@ -103,7 +103,7 @@ end
 
 if $0 == __FILE__
 
-	feed = Feed.new("BOB.COM", 'https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads')
-	feed.items_to_tweet
+	feed = Feed.new("GOAZTECS", 'https://gdata.youtube.com/feeds/api/users/goaztecscom/uploads')
+	feed.tweet_items
 
 end 

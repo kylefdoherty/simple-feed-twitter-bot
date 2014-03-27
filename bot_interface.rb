@@ -1,10 +1,20 @@
+# go through the feed list and generate a feed with feed info i.e. name & url 
+# then call the .item_to_tweet method to actually tweet the items 
+
+
+
+
+
+
+
+
 require_relative 'feed_list'
 require_relative 'feed'
 
 class BotInterface #allows user to interact with feed.rb to list, add, edit, and delete 
 
 	def initialize 
-		@feeds = FeedList.new
+		@list_of_feeds = FeedList.new
 		take_commands
 	end 
 
@@ -37,19 +47,19 @@ class BotInterface #allows user to interact with feed.rb to list, add, edit, and
 		else 
 			case response 
 			when "-list"
-				@feeds.list
+				@list_of_feeds.list
 			when "-add"
-				@feeds.add
+				@list_of_feeds.add
 			when "-edit"
 				puts "feed name:"
 				name = gets.chomp
-				@feeds.edit(name)
+				@list_of_feeds.edit(name)
 			when "-delete"
 				puts "feed name:"
 				name = gets.chomp
-				@feeds.delete(name)
+				@list_of_feeds.delete(name)
 			when "-tweet"
-				@feeds.items_to_tweet
+				@list_of_feeds.generate_feeds
 				
 			when "-quit"
 				exit 
@@ -62,5 +72,7 @@ class BotInterface #allows user to interact with feed.rb to list, add, edit, and
 	 
 
 end
+
+
 
 cli = BotInterface.new	

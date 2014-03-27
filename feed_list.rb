@@ -95,6 +95,15 @@ class FeedList
 		end  
 	end 
 
+	def generate_feeds
+		get_feeds
+
+		@feeds.each do |k,v|
+			feed = Feed.new(k,v)
+			feed.tweet_items
+		end 
+	end 
+
 
 end 
 
